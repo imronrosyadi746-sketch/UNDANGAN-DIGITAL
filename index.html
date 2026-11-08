@@ -39,7 +39,7 @@
             min-height: 100vh;
         }
 
-        /* SISI KIRI: STICKY (TETAP DI TEMPAT / ADA VIDEO & FOTO) */
+        /* SISI KIRI: STICKY MEDIA (VIDEO/FOTO AESTHETIC) */
         .left-panel {
             flex: 1.2;
             height: 100vh;
@@ -54,20 +54,21 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.9) contrast(1.05);
         }
 
-        /* SISI KANAN: GERAK (CAN SCROLL FREELY) */
+        /* SISI KANAN: BISA DI-SCROLL KE BAWAH */
         .right-panel {
             flex: 0.8;
-            background-color: #1a1a1a;
+            background-color: #161616;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 20px;
-            gap: 80px;
+            padding: 70px 20px;
+            gap: 70px;
         }
 
-        /* CARD AESTHETIC STYLE GROOVE PUBLIC */
+        /* CARD AESTHETIC GROOVE PUBLIC STYLE */
         .card-groove {
             background-color: var(--bg-card);
             color: var(--text-dark);
@@ -95,7 +96,23 @@
             margin-bottom: 20px;
         }
 
-        /* NAVBAR FIXED: INDICATOR & MUSIK CONTROLLER */
+        /* CARD PHOTO MINI GALERI */
+        .card-photo {
+            width: 100%;
+            max-width: 420px;
+            height: 260px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .card-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* NAVBAR FIXED */
         .header-fixed {
             position: fixed;
             top: 25px;
@@ -122,14 +139,20 @@
         }
 
         .music-btn {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
             color: white;
-            padding: 8px 15px;
+            padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.75rem;
-            backdrop-filter: blur(5px);
+            letter-spacing: 1px;
+            backdrop-filter: blur(8px);
+            transition: 0.3s;
+        }
+
+        .music-btn:hover {
+            background: rgba(255,255,255,0.3);
         }
 
         /* COVER OVERLAY (SAMPUL BUKA UNDANGAN) */
@@ -137,7 +160,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover;
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -225,7 +248,7 @@
             outline: none;
         }
 
-        /* RESPONSIVE LAYOUT MOBILE (KIRI ATAS STICKY / KANAN BOTTOM SCROLL) */
+        /* RESPONSIVE LAYOUT MOBILE (PANEL KIRI TERKUNCI ATAS, KANAN SCROLL BOTTOM) */
         @media (max-width: 850px) {
             .wrapper {
                 flex-direction: column;
@@ -248,15 +271,15 @@
 </head>
 <body>
 
-    <!-- BACKSOUND AUDIO -->
-    <audio id="bgMusic" loop>
+    <!-- BACKSOUND AUDIO ROMANTIS AKUSTIK -->
+    <audio id="bgMusic" loop preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
     </audio>
 
     <!-- HEADER FIXED NAVBAR -->
     <div class="header-fixed">
         <div class="slide-indicator">Angga & Putri</div>
-        <button class="music-btn" onclick="toggleMusic()" id="musicToggle">🎵 Play Music</button>
+        <button class="music-btn" onclick="toggleMusic()" id="musicToggle">🎵 PLAY MUSIC</button>
     </div>
 
     <!-- COVER SCREEN UNTUK BUKA UNDANGAN -->
@@ -277,14 +300,14 @@
     <!-- MAIN WRAPPER SPLIT SCREEN -->
     <div class="wrapper">
         
-        <!-- SISI KIRI: STICKY DISPLAY (VIDEO / FOTO DEPAN) -->
+        <!-- SISI KIRI: STICKY DISPLAY (VIDEO STOK CINEMATIC ROMANTIS) -->
         <div class="left-panel">
             <video autoplay muted loop playsinline id="bgVideo">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-wedding-couple-walking-in-a-forest-42993-large.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-romantic-couple-walking-along-the-beach-at-sunset-41551-large.mp4" type="video/mp4">
             </video>
         </div>
 
-        <!-- SISI KANAN: GERAK / BISA DI-SCROLL KE BAWAH -->
+        <!-- SISI KANAN: PANJANG / BISA DI-SCROLL KE BAWAH -->
         <div class="right-panel">
             
             <!-- SECTION 1: COVER INFO -->
@@ -292,6 +315,11 @@
                 <p style="letter-spacing: 2px; font-size: 0.75rem;">WE INVITE YOU TO CELEBRATE</p>
                 <h2>Angga & Putri</h2>
                 <p style="letter-spacing: 1px;">Sabtu, 12 DESEMBER 2026</p>
+            </div>
+
+            <!-- SISIPAN FOTO PREWEDDING AESTHETIC 1 -->
+            <div class="card-photo">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Foto Prewedding Romantic">
             </div>
 
             <!-- SECTION 2: Q.S AR-RUM -->
@@ -312,6 +340,11 @@
                 <p style="letter-spacing: 2px; font-size: 0.7rem; color: #485646;">THE BRIDE</p>
                 <h3 style="font-family: var(--font-title); font-size: 1.8rem;">Putri Delista</h3>
                 <p style="font-size: 0.75rem;">Anak Pertama Dari<br>Bapak Deden (Alm) & Ibu Yuli Kartika</p>
+            </div>
+
+            <!-- SISIPAN FOTO PREWEDDING AESTHETIC 2 -->
+            <div class="card-photo">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Detail Wedding Flower & Ring">
             </div>
 
             <!-- SECTION 4: ATTIRE / PALET WARNA -->
@@ -340,6 +373,11 @@
                     <div class="count-box"><span id="minutes">00</span><small>Menit</small></div>
                     <div class="count-box"><span id="seconds">00</span><small>Detik</small></div>
                 </div>
+            </div>
+
+            <!-- SISIPAN FOTO PREWEDDING AESTHETIC 3 -->
+            <div class="card-photo">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Romantic Sunset Moment">
             </div>
 
             <!-- SECTION 6: RSVP & UCAPAN -->
@@ -376,17 +414,17 @@
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('opened');
             audio.play().catch(e => console.log("Autoplay blocked:", e));
-            musicToggle.innerText = "🔊 Pause Music";
+            musicToggle.innerText = "🔊 PAUSE MUSIC";
         }
 
         // Toggle On/Off Musik
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
-                musicToggle.innerText = "🔊 Pause Music";
+                musicToggle.innerText = "🔊 PAUSE MUSIC";
             } else {
                 audio.pause();
-                musicToggle.innerText = "🔇 Play Music";
+                musicToggle.innerText = "🔇 PLAY MUSIC";
             }
         }
 
