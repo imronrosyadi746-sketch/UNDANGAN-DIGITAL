@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Romeo & Juliet</title>
+    <title>The Wedding of Angga & Putri</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f7f9f6;
-            --primary: #5a7052;
-            --accent: #889e80;
+            --bg-color: #f4f5f0;
+            --primary: #4a5d4e;
+            --accent: #788a7b;
             --text-dark: #2c352a;
             --card-bg: #ffffff;
         }
@@ -22,7 +22,7 @@
         }
 
         body {
-            background-color: #e5ebded8;
+            background-color: #dbe2d8;
             color: var(--text-dark);
             display: flex;
             justify-content: center;
@@ -33,13 +33,13 @@
             max-width: 480px;
             background-color: var(--bg-color);
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
             position: relative;
             overflow-x: hidden;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
-        /* Overlay Sampul */
+        /* Cover Layar Utama */
         .cover-overlay {
             position: fixed;
             top: 0;
@@ -70,7 +70,7 @@
 
         .btn-open {
             margin-top: 25px;
-            padding: 12px 30px;
+            padding: 12px 35px;
             background-color: var(--primary);
             color: white;
             border: none;
@@ -85,16 +85,16 @@
             background-color: var(--accent);
         }
 
-        /* Header Section */
+        /* Hero Header */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(255,255,255,0.2), var(--bg-color)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80') center/cover;
+            height: 55vh;
+            background: linear-gradient(rgba(255,255,255,0.1), var(--bg-color)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
             text-align: center;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
         }
 
         .hero h1 {
@@ -102,9 +102,9 @@
             color: var(--primary);
         }
 
-        /* Section Cards */
+        /* Cards Layout */
         .section {
-            padding: 30px 20px;
+            padding: 25px 20px;
             text-align: center;
         }
 
@@ -117,11 +117,11 @@
             border: 1px solid #e1e8df;
         }
 
-        /* Countdown */
+        /* Countdown Timer */
         .timer {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin-top: 15px;
         }
 
@@ -143,7 +143,6 @@
             font-size: 0.7rem;
         }
 
-        /* Couples Profile */
         .couple-img {
             width: 120px;
             height: 120px;
@@ -153,7 +152,15 @@
             border: 3px solid var(--accent);
         }
 
-        /* Form Ucapan */
+        .story-text p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        /* Form RSVP */
         .form-group {
             text-align: left;
             margin-bottom: 15px;
@@ -176,7 +183,7 @@
         .wishes-list {
             margin-top: 20px;
             text-align: left;
-            max-height: 250px;
+            max-height: 280px;
             overflow-y: auto;
         }
 
@@ -193,15 +200,20 @@
             display: block;
         }
 
-        .btn-copy {
-            padding: 6px 15px;
+        .wish-item small {
+            color: #888;
+            font-size: 0.75rem;
+        }
+
+        .btn-maps {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
             background: var(--primary);
             color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            margin-top: 8px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -209,47 +221,63 @@
 
     <!-- Cover Sampul Utama -->
     <div class="cover-overlay" id="cover">
-        <p style="letter-spacing: 2px; font-size: 0.8rem;">THE WEDDING OF</p>
-        <h1 style="font-size: 2.5rem; margin: 15px 0;">Romeo & Juliet</h1>
-        <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
-        <h3 style="margin-top: 5px;">Tamu Undangan</h3>
-        <button class="btn-open" onclick="openInvitation()">💌 Buka Undangan</button>
+        <p style="letter-spacing: 2px; font-size: 0.8rem;">WE INVITE YOU TO CELEBRATE</p>
+        <h1 style="font-size: 2.5rem; margin: 15px 0;">Angga & Putri</h1>
+        <p style="font-size: 0.9rem;">Minggu, 1 November 2026</p>
+        <div style="margin-top: 30px;">
+            <p style="font-size: 0.85rem;">Kepada Yth.</p>
+            <h3 style="margin-top: 5px; font-size: 1.2rem;" id="guestName">Keluarga Abah Endi</h3>
+            <small style="font-size: 0.7rem; color: #ddd; display:block; margin-top:5px;">Kami mohon maaf jika ada kesalahan penulisan nama atau gelar</small>
+        </div>
+        <button class="btn-open" onclick="openInvitation()">✉️ Buka Undangan</button>
     </div>
 
     <!-- Konten Utama Website -->
     <div class="mobile-container">
         
         <div class="hero">
-            <p>Walimatul 'Ursy</p>
-            <h1>Romeo & Juliet</h1>
-            <p style="font-style: italic; color: #666;">20 Desember 2026</p>
+            <p style="letter-spacing: 2px; font-size: 0.75rem;">THE WEDDING OF</p>
+            <h1>Angga & Putri</h1>
+            <p style="font-style: italic; color: #666;">Minggu, 1 November 2026</p>
         </div>
 
         <div class="section">
+            <!-- Ayat Suci -->
             <div class="card">
-                <p style="font-size: 0.85rem; font-style: italic;">
-                    "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..."
+                <h3 style="color: var(--primary); margin-bottom: 10px;">Q.S Ar-Rum Ayat 21</h3>
+                <p style="font-size: 0.85rem; font-style: italic; line-height: 1.6;">
+                    “Dan di antara tanda-tanda (kebesaran) Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”
                 </p>
-                <small style="display:block; margin-top: 8px; color: var(--primary); font-weight: 600;">(QS. Ar-Rum: 21)</small>
             </div>
 
-            <!-- Profile Mempelai -->
-            <h2>Mempelai</h2>
+            <!-- Profil Mempelai -->
+            <h2>The Bride & Groom</h2>
             <div class="card" style="margin-top: 15px;">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" class="couple-img" alt="Pria">
-                <h3>Romeo Alfa, S.T.</h3>
-                <p style="font-size: 0.8rem;">Putra dari Bapak Ahmad & Ibu Siti</p>
+                <p style="letter-spacing: 2px; font-size: 0.8rem; color: var(--primary);">THE GROOM</p>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" class="couple-img" alt="Angga">
+                <h3>Angga Supriatna</h3>
+                <p style="font-size: 0.8rem; margin-top: 5px;">Anak Kedua dari<br><strong>Bapak Uju Ruhiatna & Ibu Imas Mulyati</strong></p>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: var(--accent);">Instagram: @haloangguy__</p>
                 
-                <h2 style="margin: 20px 0 10px 0; color: var(--accent);">&</h2>
+                <h2 style="margin: 25px 0 15px 0; color: var(--accent);">&</h2>
                 
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" class="couple-img" alt="Wanita">
-                <h3>Juliet Bravo, S.E.</h3>
-                <p style="font-size: 0.8rem;">Putri dari Bapak Budi & Ibu Anisa</p>
+                <p style="letter-spacing: 2px; font-size: 0.8rem; color: var(--primary);">THE BRIDE</p>
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" class="couple-img" alt="Putri">
+                <h3>Putri Delista</h3>
+                <p style="font-size: 0.8rem; margin-top: 5px;">Anak Pertama dari<br><strong>Bapak Deden (Alm) & Ibu Yuli Kartika</strong></p>
+            </div>
+
+            <!-- Story Section -->
+            <div class="card story-text">
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 15px;">OUR STORY</h3>
+                <p>Sejak awal, hubungan ini berjalan dengan tujuan yang jelas. Berawal tahun 2023 kami dipertemukan pada sebuah acara, koordinasi singkat menjembatani kedekatan kami. Proses kami untuk mengenal satu sama lain dengan sungguh-sungguh, tanpa terburu-buru memberi nama pada hubungan yang dijalani.</p>
+                <p>Pada tahun 2024, percakapan tentang masa depan mulai menjadi bagian dari perjalanan kami. Hingga akhirnya pada Juli 2025, kedua keluarga dipertemukan dalam sebuah silaturahmi yang menjadi langkah awal menuju ikatan yang lebih serius.</p>
+                <p>Setelah melalui berbagai proses, doa, dan perencanaan bersama, akhirnya kami menemukan tanggal yang kami nantikan pada 1 November 2026. Hari di mana kami memilih untuk mengikat janji dan melangkah bersama dalam perjalanan seumur hidup.</p>
             </div>
 
             <!-- Countdown Timer -->
             <div class="card">
-                <h3>Menuju Hari Bahagia</h3>
+                <h3>Almost Time For Our Celebration</h3>
                 <div class="timer">
                     <div class="timer-box"><span id="days">00</span><small>Hari</small></div>
                     <div class="timer-box"><span id="hours">00</span><small>Jam</small></div>
@@ -258,36 +286,27 @@
                 </div>
             </div>
 
-            <!-- Detail Waktu & Lokasi -->
-            <h2>Waktu & Lokasi</h2>
+            <!-- Waktu & Tempat Acara -->
+            <h2>Acara Pernikahan</h2>
             <div class="card" style="margin-top: 15px;">
-                <h3 style="color: var(--primary);">Akad Nikah</h3>
-                <p style="font-size: 0.9rem; margin-top: 5px;">08.00 - 10.00 WIB</p>
-                <hr style="margin: 15px 0; border: none; border-top: 1px solid #eee;">
-                <h3 style="color: var(--primary);">Resepsi</h3>
-                <p style="font-size: 0.9rem; margin-top: 5px;">11.00 - 14.00 WIB</p>
-                <p style="font-size: 0.85rem; margin-top: 10px; color: #555;"><strong>Lokasi:</strong> Grand Ballroom Hotel Utama, Jakarta</p>
+                <h3 style="color: var(--primary);">AKAD PERNIKAHAN</h3>
+                <p style="font-weight: 600; font-size: 0.9rem; margin-top: 5px;">Pukul 08.00 s.d 10.00 WIB</p>
+                <p style="font-size: 0.8rem; margin-top: 8px; color: #555;">Jl. Sekemala No.12 RT 01/11, Pasanggrahan, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40617</p>
                 
-                <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
-                    <button class="btn-open" style="margin-top: 15px; width: 100%;">📍 Petunjuk Petunjuk Lokasi (Google Maps)</button>
-                </a>
+                <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
+                
+                <h3 style="color: var(--primary);">RESEPSI PERNIKAHAN</h3>
+                <p style="font-weight: 600; font-size: 0.9rem; margin-top: 5px;">Pukul 11.00 WIB s.d Selesai</p>
+                <p style="font-size: 0.8rem; margin-top: 8px; color: #555;">Jl. Sekemala No.12 RT 01/11, Pasanggrahan, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40617</p>
+                
+                <a href="https://maps.app.goo.gl/eUX2rgfCYMMvTYJm8" target="_blank" class="btn-maps">🗺️ GOOGLE MAPS</a>
             </div>
 
-            <!-- Digital Gift -->
-            <div class="card">
-                <h3>Amplop Digital</h3>
-                <p style="font-size: 0.8rem; margin: 10px 0; color: #666;">Doa restu Anda merupakan hadiah terindah. Namun jika ingin memberi hadiah, dapat melalui:</p>
-                <div style="background: #f9f9f9; padding: 10px; border-radius: 8px; margin-top: 10px;">
-                    <p style="font-weight: 600; font-size: 0.85rem;">Bank BCA</p>
-                    <p id="rekening" style="font-size: 0.9rem; color: var(--primary);">1234567890</p>
-                    <p style="font-size: 0.75rem;">a.n Romeo Alfa</p>
-                    <button class="btn-copy" onclick="copyRekening()">Salin No. Rekening</button>
-                </div>
-            </div>
-
-            <!-- Form RSVP & Ucapan -->
+            <!-- RSVP & Ucapan Selamat -->
             <div class="card">
                 <h3>RSVP & Ucapan Selamat</h3>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Kami sangat senang jika Anda dapat mengonfirmasi kehadiran dan memberikan doa terbaik.</p>
+                
                 <form id="rsvpForm" style="margin-top: 15px;" onsubmit="submitWish(event)">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
@@ -301,16 +320,28 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Pesan / Ucapan Selamat</label>
-                        <textarea id="wishInput" rows="3" required placeholder="Tuliskan doa & ucapan..."></textarea>
+                        <label>Ucapan & Doa</label>
+                        <textarea id="wishInput" rows="3" required placeholder="Tuliskan ucapan..."></textarea>
                     </div>
                     <button type="submit" class="btn-open" style="width: 100%;">Kirim Ucapan</button>
                 </form>
 
+                <!-- Daftar Ucapan Masuk (Contoh Real dari Link) -->
                 <div class="wishes-list" id="wishesContainer">
                     <div class="wish-item">
-                        <strong>Budi Santoso</strong>
-                        <span>Selamat untuk Romeo & Juliet! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin!</span>
+                        <strong>amelia nur azkiya & pasangan</strong>
+                        <span>Barakallah Angga & Putri. Sakinnah Mawaddah warahmah✨</span>
+                        <br><small>01 Nov 2026</small>
+                    </div>
+                    <div class="wish-item">
+                        <strong>Lutfianti</strong>
+                        <span>Happy wedding Angga dan istri semoga cepat dapet momongan, selalu diberkahi dan menjadi keluarga samawa.</span>
+                        <br><small>01 Nov 2026</small>
+                    </div>
+                    <div class="wish-item">
+                        <strong>Robby & istri</strong>
+                        <span>Wilujeng cees guy🥳🥳 berkah barokah, Semoga menjadi keluarga samawa, lancar acaranya 🙏🥳</span>
+                        <br><small>01 Nov 2026</small>
                     </div>
                 </div>
             </div>
@@ -319,13 +350,20 @@
     </div>
 
     <script>
-        // Buka Undangan
+        // Tangkap nama tamu dari parameter URL (contoh: ?to=Keluarga%20Abah%20Endi)
+        const urlParams = new URLSearchParams(window.location.search);
+        const guest = urlParams.get('to');
+        if (guest) {
+            document.getElementById('guestName').innerText = decodeURIComponent(guest);
+        }
+
+        // Fungsi Buka Undangan
         function openInvitation() {
             document.getElementById('cover').classList.add('open');
         }
 
-        // Hitung Mundur Waktu
-        const targetDate = new Date("Dec 20, 2026 08:00:00").getTime();
+        // Countdown Timer ke 1 November 2026
+        const targetDate = new Date("Nov 1, 2026 08:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -335,20 +373,13 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById("days").innerText = days < 0 ? "00" : (days < 10 ? "0" + days : days);
+            document.getElementById("hours").innerText = hours < 0 ? "00" : (hours < 10 ? "0" + hours : hours);
+            document.getElementById("minutes").innerText = minutes < 0 ? "00" : (minutes < 10 ? "0" + minutes : minutes);
+            document.getElementById("seconds").innerText = seconds < 0 ? "00" : (seconds < 10 ? "0" + seconds : seconds);
         }, 1000);
 
-        // Salin Rekening
-        function copyRekening() {
-            const rek = document.getElementById("rekening").innerText;
-            navigator.clipboard.writeText(rek);
-            alert("Nomor rekening berhasil disalin!");
-        }
-
-        // Tambah Ucapan
+        // Fungsi Kirim Ucapan
         function submitWish(e) {
             e.preventDefault();
             const name = document.getElementById("nameInput").value;
@@ -357,12 +388,12 @@
             const container = document.getElementById("wishesContainer");
             const newWish = document.createElement("div");
             newWish.className = "wish-item";
-            newWish.innerHTML = `<strong>${name}</strong><span>${wish}</span>`;
+            newWish.innerHTML = `<strong>${name}</strong><span>${wish}</span><br><small>Baru saja</small>`;
             
             container.prepend(newWish);
             
             document.getElementById("rsvpForm").reset();
-            alert("Terima kasih atas ucapan dan konfirmasinya!");
+            alert("Terima kasih atas ucapan dan doa Anda!");
         }
     </script>
 </body>
