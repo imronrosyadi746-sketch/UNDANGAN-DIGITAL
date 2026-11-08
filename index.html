@@ -271,9 +271,10 @@
 </head>
 <body>
 
-    <!-- BACKSOUND AUDIO: PERANG TELAH USAI - NADIN AMIZAH -->
+    <!-- FILE AUDIO NADIN AMIZAH BERFORMAT AAC DARI REPOSITORI GITHUB -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://files.catbox.moe/6f3b7u.mp3" type="audio/mpeg">
+        <source src="Nadin_Amizah_-_Di_Akhir_Perang_(mp3.pm).aac" type="audio/aac">
+        <source src="Nadin_Amizah_-_Di_Akhir_Perang_(mp3.pm).aac" type="audio/mp4">
     </audio>
 
     <!-- HEADER FIXED NAVBAR -->
@@ -419,11 +420,17 @@
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('opened');
             
-            // Atur lagu langsung mulai dari detik ke-150 (Menit 2:30)
-            audio.currentTime = 150;
+            // Mengatur waktu mulai lagu ke menit 2:30 (150 detik)
+            try {
+                audio.currentTime = 150;
+            } catch(e) {}
             
-            audio.play().catch(e => console.log("Autoplay blocked:", e));
-            musicToggle.innerText = "🔊 PAUSE MUSIC";
+            audio.play().then(() => {
+                musicToggle.innerText = "🔊 PAUSE MUSIC";
+            }).catch(e => {
+                console.log("Autoplay blocked:", e);
+                musicToggle.innerText = "🎵 PLAY MUSIC";
+            });
         }
 
         // Toggle On/Off Musik
