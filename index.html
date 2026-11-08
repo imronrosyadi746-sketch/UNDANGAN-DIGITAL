@@ -307,7 +307,7 @@
             </video>
         </div>
 
-        <!-- SISI KANAN: PANJANG / BISA DI-SCROLL KE BAWAH -->
+        <!-- SISI KANAN: BISA DI-SCROLL KE BAWAH -->
         <div class="right-panel">
             
             <!-- SECTION 1: COVER INFO -->
@@ -412,12 +412,16 @@
             document.getElementById('guestName').innerText = decodeURIComponent(guest);
         }
 
-        // Buka Undangan & Auto-Play Audio Musik (Perang Telah Usai)
+        // Buka Undangan & Auto-Play Audio Musik dari Menit 2:30 (150 Detik)
         const audio = document.getElementById("bgMusic");
         const musicToggle = document.getElementById("musicToggle");
 
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('opened');
+            
+            // Atur lagu langsung mulai dari detik ke-150 (Menit 2:30)
+            audio.currentTime = 150;
+            
             audio.play().catch(e => console.log("Autoplay blocked:", e));
             musicToggle.innerText = "🔊 PAUSE MUSIC";
         }
@@ -425,6 +429,9 @@
         // Toggle On/Off Musik
         function toggleMusic() {
             if (audio.paused) {
+                if (audio.currentTime < 150) {
+                    audio.currentTime = 150;
+                }
                 audio.play();
                 musicToggle.innerText = "🔊 PAUSE MUSIC";
             } else {
