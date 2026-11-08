@@ -39,7 +39,7 @@
             min-height: 100vh;
         }
 
-        /* SISI KIRI: STICKY MEDIA (VIDEO/FOTO AESTHETIC) */
+        /* SISI KIRI: STICKY MEDIA (VIDEO DEPAN) */
         .left-panel {
             flex: 1.2;
             height: 100vh;
@@ -96,11 +96,11 @@
             margin-bottom: 20px;
         }
 
-        /* CARD PHOTO MINI GALERI */
+        /* CARD PHOTO MINI GALERI FOTO TAMBAHAN */
         .card-photo {
             width: 100%;
             max-width: 420px;
-            height: 260px;
+            height: 280px;
             border-radius: 2px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -160,7 +160,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('WhatsApp Image 2026-11-08 at 18.06.06.jpeg') center/cover;
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -248,7 +248,7 @@
             outline: none;
         }
 
-        /* RESPONSIVE LAYOUT MOBILE (PANEL KIRI TERKUNCI ATAS, KANAN SCROLL BOTTOM) */
+        /* RESPONSIVE LAYOUT MOBILE */
         @media (max-width: 850px) {
             .wrapper {
                 flex-direction: column;
@@ -271,7 +271,7 @@
 </head>
 <body>
 
-    <!-- BACKSOUND AUDIO ROMANTIS AKUSTIK -->
+    <!-- BACKSOUND AUDIO -->
     <audio id="bgMusic" loop preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
     </audio>
@@ -282,7 +282,7 @@
         <button class="music-btn" onclick="toggleMusic()" id="musicToggle">🎵 PLAY MUSIC</button>
     </div>
 
-    <!-- COVER SCREEN UNTUK BUKA UNDANGAN -->
+    <!-- COVER SCREEN (SAMPUL DEPAN BUKA UNDANGAN) -->
     <div class="cover-overlay" id="coverScreen">
         <p style="letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase;">We Invite You To Celebrate</p>
         <h1 style="font-family: var(--font-title); font-size: 3.5rem; margin: 20px 0; font-weight: 400;">Angga & Putri</h1>
@@ -300,14 +300,14 @@
     <!-- MAIN WRAPPER SPLIT SCREEN -->
     <div class="wrapper">
         
-        <!-- SISI KIRI: STICKY DISPLAY (VIDEO STOK CINEMATIC ROMANTIS) -->
+        <!-- SISI KIRI: VIDEO WHATSAPP YANG BARU DI-UPLOAD -->
         <div class="left-panel">
             <video autoplay muted loop playsinline id="bgVideo">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-romantic-couple-walking-along-the-beach-at-sunset-41551-large.mp4" type="video/mp4">
+                <source src="WhatsApp Video 2026-11-08 at 18.02.08 (1).mp4" type="video/mp4">
             </video>
         </div>
 
-        <!-- SISI KANAN: PANJANG / BISA DI-SCROLL KE BAWAH -->
+        <!-- SISI KANAN: BISA DI-SCROLL KE BAWAH DENGAN FOTO WHATSAPP -->
         <div class="right-panel">
             
             <!-- SECTION 1: COVER INFO -->
@@ -317,9 +317,9 @@
                 <p style="letter-spacing: 1px;">Sabtu, 12 DESEMBER 2026</p>
             </div>
 
-            <!-- SISIPAN FOTO PREWEDDING AESTHETIC 1 -->
+            <!-- FOTO 1 WHATSAPP -->
             <div class="card-photo">
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Foto Prewedding Romantic">
+                <img src="WhatsApp Image 2026-11-08 at 18.06.09.jpeg" alt="Foto Prewed 1">
             </div>
 
             <!-- SECTION 2: Q.S AR-RUM -->
@@ -327,6 +327,11 @@
                 <h2>Q.S Ar-Rum Ayat 21</h2>
                 <p style="font-style: italic;">“Dan di antara tanda-tanda (kebesaran) Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang...”</p>
                 <p style="font-family: var(--font-title); font-size: 1.4rem; margin-top: 15px;">Angga & Putri</p>
+            </div>
+
+            <!-- FOTO 2 WHATSAPP -->
+            <div class="card-photo">
+                <img src="WhatsApp Image 2026-11-08 at 18.06.11.jpeg" alt="Foto Prewed 2">
             </div>
 
             <!-- SECTION 3: MEMPELAI -->
@@ -342,9 +347,9 @@
                 <p style="font-size: 0.75rem;">Anak Pertama Dari<br>Bapak Deden (Alm) & Ibu Yuli Kartika</p>
             </div>
 
-            <!-- SISIPAN FOTO PREWEDDING AESTHETIC 2 -->
+            <!-- FOTO 3 WHATSAPP -->
             <div class="card-photo">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Detail Wedding Flower & Ring">
+                <img src="WhatsApp Image 2026-11-08 at 18.06.12.jpeg" alt="Foto Prewed 3">
             </div>
 
             <!-- SECTION 4: ATTIRE / PALET WARNA -->
@@ -360,6 +365,11 @@
                 </div>
             </div>
 
+            <!-- FOTO 4 WHATSAPP -->
+            <div class="card-photo">
+                <img src="WhatsApp Image 2026-11-08 at 18.06.13.jpeg" alt="Foto Prewed 4">
+            </div>
+
             <!-- SECTION 5: WAKTU & COUNTDOWN -->
             <div class="card-groove">
                 <h2>AKAD & RESEPSI</h2>
@@ -373,11 +383,6 @@
                     <div class="count-box"><span id="minutes">00</span><small>Menit</small></div>
                     <div class="count-box"><span id="seconds">00</span><small>Detik</small></div>
                 </div>
-            </div>
-
-            <!-- SISIPAN FOTO PREWEDDING AESTHETIC 3 -->
-            <div class="card-photo">
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Romantic Sunset Moment">
             </div>
 
             <!-- SECTION 6: RSVP & UCAPAN -->
