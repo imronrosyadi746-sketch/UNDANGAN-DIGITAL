@@ -3,313 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Angga & Putri</title>
-    <!-- Swiper CSS untuk Efek Slide / Snap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Angga & Putri Wedding Invitation</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #1e1e1e;
-            --card-bg: #c5c2b8;
-            --primary: #4a5d4e;
-            --text-dark: #2c352a;
+            --bg-dark: #1f1f1f;
+            --bg-card: #cfcac0;
+            --text-dark: #292826;
+            --accent-green: #485646;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
-        body, html {
+        html, body {
             width: 100%;
             height: 100%;
+            font-family: var(--font-body);
+            background-color: #121212;
+            color: #ffffff;
             overflow: hidden;
-            background-color: #000;
         }
 
-        /* Swiper Main Container */
-        .swiper {
-            width: 100%;
+        /* CONTAINER SCROLL SNAP FULLSCREEN */
+        .snap-container {
+            width: 100vw;
             height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
 
-        .swiper-slide {
+        .snap-section {
+            width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
             display: flex;
-            width: 100%;
-            height: 100%;
             background-color: var(--bg-dark);
-            position: relative;
+            overflow: hidden;
         }
 
-        /* INDIKATOR NOMOR SLIDE (Misal 1/5, 10/14) */
-        .slide-counter {
+        /* HEADER FIXED: COUNTER & BURGER MENU */
+        .header-fixed {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-family: 'Playfair Display', serif;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header-fixed * {
+            pointer-events: auto;
+        }
+
+        .slide-indicator {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
             font-style: italic;
-            font-size: 1.1rem;
-            z-index: 100;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.85);
         }
 
-        /* MENU BURGER NAVIGATION */
-        .menu-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            color: white;
-            font-size: 1.5rem;
+        .menu-burger {
             cursor: pointer;
+            width: 24px;
+            height: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* LAYOUT 2 SISI (DESKTOP & TABLET/MOBILE RESPONSIVE) */
-        .slide-left {
-            flex: 1;
+        .menu-burger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* SPLIT SCREEN LAYOUT */
+        .split-left {
+            flex: 1.2;
             height: 100%;
             position: relative;
         }
 
-        .slide-left img, .slide-left video {
+        .split-left img, .split-left video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .slide-right {
-            flex: 1;
+        .split-right {
+            flex: 0.8;
             height: 100%;
-            background: #2b2b2b;
+            background-color: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 40px;
         }
 
-        /* CARD CONTENT STYLE (PERSISE ATTIRE / KARTU KONTEN) */
-        .content-card {
-            background-color: #c9c5ba;
+        /* CARD AESTHETIC GROOVE PUBLIC STYLE */
+        .card-groove {
+            background-color: var(--bg-card);
+            color: var(--text-dark);
             width: 100%;
-            max-width: 380px;
-            padding: 40px 25px;
-            border-radius: 4px;
+            max-width: 420px;
+            padding: 45px 30px;
+            border-radius: 2px;
             text-align: center;
-            color: #2b2b2b;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            position: relative;
         }
 
-        .content-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+        .card-groove h2 {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .content-card p {
+        .card-groove p {
             font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            color: #444;
+            line-height: 1.7;
+            color: #3f3d3a;
+            margin-bottom: 20px;
         }
 
-        /* PALET WARNA (ATTIRE DRESS CODE) */
-        .color-palette {
+        /* COVER SCREEN (POPUP AWAL) */
+        .cover-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80') center/cover;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .cover-overlay.opened {
+            transform: translateY(-100%);
+        }
+
+        .btn-groove {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 40px;
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-groove:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* PALET WARNA (ATTIRE) */
+        .palette-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .palette-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* COUNTDOWN */
+        .countdown-grid {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
 
-        .color-dot {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        .count-box {
+            background-color: rgba(0,0,0,0.06);
+            padding: 10px;
+            min-width: 60px;
+            border-radius: 3px;
         }
 
-        /* COVER DEPAN OVERLAY */
-        .cover-screen {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80') center/cover;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            transition: 0.8s ease;
+        .count-box span {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            display: block;
+            font-weight: 600;
         }
 
-        .cover-screen.hide {
-            transform: translateY(-100%);
+        .count-box small {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-open {
-            margin-top: 25px;
-            padding: 12px 35px;
-            background-color: #5a6e58;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            cursor: pointer;
+        /* FORM STYLE */
+        .input-groove {
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 12px;
+            border: 1px solid #a39e94;
+            background: transparent;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            outline: none;
         }
 
-        /* RESPONSIVE UNTUK HP (TAMPILAN TUMPUK ATAS BAWAH) */
-        @media (max-width: 768px) {
-            .swiper-slide {
+        /* RESPONSIVE KHUSUS MOBILE TAMPILAN FULL STACK */
+        @media (max-width: 850px) {
+            .snap-section {
                 flex-direction: column;
             }
-            .slide-left {
+            .split-left {
+                flex: 1;
                 height: 50%;
             }
-            .slide-right {
+            .split-right {
+                flex: 1;
                 height: 50%;
-                padding: 15px;
+                padding: 20px;
             }
-            .content-card {
-                padding: 20px 15px;
+            .card-groove {
+                padding: 30px 20px;
+            }
+            .card-groove h2 {
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- INDIKATOR NOMOR SLIDE -->
-    <div class="slide-counter" id="slideCounter">1 / 5</div>
-    
-    <!-- BURGER MENU -->
-    <div class="menu-btn">═</div>
-
-    <!-- COVER SAMPUL AWAL -->
-    <div class="cover-screen" id="cover">
-        <p style="letter-spacing: 2px;">WE INVITE YOU TO CELEBRATE</p>
-        <h1 style="font-family: 'Playfair Display'; font-size: 3rem; margin: 15px 0;">Angga & Putri</h1>
-        <p id="guestName">Kepada Yth: Keluarga Abah Endi</p>
-        <button class="btn-open" onclick="startInvitation()">Buka Undangan</button>
-    </div>
-
-    <!-- SWIPER CONTAINER (SLIDE PRESENTASI) -->
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            
-            <!-- SLIDE 1: HOME MEMPELAI -->
-            <div class="swiper-slide">
-                <div class="slide-left">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Foto Cover">
-                </div>
-                <div class="slide-right">
-                    <div class="content-card">
-                        <h2>Angga & Putri</h2>
-                        <p>Minggu, 1 November 2026<br>Bandung, Jawa Barat</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 2: Q.S AR-RUM -->
-            <div class="swiper-slide">
-                <div class="slide-left">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80" alt="Ayat">
-                </div>
-                <div class="slide-right">
-                    <div class="content-card">
-                        <h2 style="font-size: 1.5rem;">Q.S Ar-Rum: 21</h2>
-                        <p style="font-style: italic;">“Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...”</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3: ATTIRE / DRESS CODE (PERSISE SEPERTI SCREENSHOT) -->
-            <div class="swiper-slide">
-                <div class="slide-left">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Attire">
-                </div>
-                <div class="slide-right">
-                    <div class="content-card">
-                        <h2>ATTIRE</h2>
-                        <p>Akan sangat berkesan bagi kami jika para tamu dapat mengenakan warna-warna ini di hari spesial kami</p>
-                        
-                        <div class="color-palette">
-                            <div class="color-dot" style="background-color: #ffffff;"></div>
-                            <div class="color-dot" style="background-color: #708238;"></div>
-                            <div class="color-dot" style="background-color: #d9531e;"></div>
-                            <div class="color-dot" style="background-color: #9e381b;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 4: WAKTU & LOKASI -->
-            <div class="swiper-slide">
-                <div class="slide-left">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80" alt="Lokasi">
-                </div>
-                <div class="slide-right">
-                    <div class="content-card">
-                        <h2>WAKTU & LOKASI</h2>
-                        <p><strong>AKAD PERNIKAHAN</strong><br>08.00 - 10.00 WIB</p>
-                        <p><strong>RESEPSI PERNIKAHAN</strong><br>11.00 WIB - Selesai</p>
-                        <p style="font-size: 0.75rem;">Jl. Sekemala No.12, Pasanggrahan, Ujung Berung, Bandung</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 5: RSVP & UCAPAN -->
-            <div class="swiper-slide">
-                <div class="slide-left">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=80" alt="RSVP">
-                </div>
-                <div class="slide-right">
-                    <div class="content-card">
-                        <h2>RSVP</h2>
-                        <p>Tinggalkan ucapan dan konfirmasi kehadiran Anda untuk menyertai kebahagiaan kami.</p>
-                    </div>
-                </div>
-            </div>
-
+    <!-- HEADER FIXED NAVBAR -->
+    <div class="header-fixed">
+        <div class="slide-indicator" id="slideNum">01/06</div>
+        <div class="menu-burger">
+            <span></span>
+            <span></span>
         </div>
     </div>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- COVER SCREEN UNTUK BUKAN UNDANGAN -->
+    <div class="cover-overlay" id="coverScreen">
+        <p style="letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase;">We Invite You To Celebrate</p>
+        <h1 style="font-family: var(--font-title); font-size: 3.5rem; margin: 20px 0; font-weight: 400;">Angga & Putri</h1>
+        <p style="letter-spacing: 1px; font-size: 0.9rem;">Sabtu, 12 Desember 2026</p>
+        
+        <div style="margin-top: 40px;">
+            <p style="font-size: 0.8rem; color: #ccc;">Kepada Yth.</p>
+            <h3 style="font-family: var(--font-title); font-size: 1.8rem; margin-top: 5px;" id="guestName">Keluarga Abah Endi</h3>
+            <p style="font-size: 0.7rem; color: #aaa; margin-top: 5px;">Kami mohon maaf jika ada kesalahan penulisan nama atau gelar</p>
+        </div>
 
+        <button class="btn-groove" onclick="openInvitation()">Buka</button>
+    </div>
+
+    <!-- CONTAINER SNAP SECTIONS (SLIDE 1 Sampai 6) -->
+    <div class="snap-container" id="snapContainer">
+
+        <!-- SLIDE 1: MAIN TITLE -->
+        <section class="snap-section" data-index="1">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Main Couple">
+            </div>
+            <div class="split-right">
+                <div class="card-groove">
+                    <p style="letter-spacing: 2px; font-size: 0.75rem;">WE INVITE YOU TO CELEBRATE</p>
+                    <h2>Angga & Putri</h2>
+                    <p style="letter-spacing: 1px;">Sabtu, 12 DESEMBER 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: Q.S AR-RUM -->
+        <section class="snap-section" data-index="2">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80" alt="Quran Section">
+            </div>
+            <div class="split-right">
+                <div class="card-groove">
+                    <h2>Q.S Ar-Rum Ayat 21</h2>
+                    <p style="font-style: italic;">“Dan di antara tanda-tanda (kebesaran) Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang...”</p>
+                    <p style="font-family: var(--font-title); font-size: 1.4rem; margin-top: 15px;">Angga & Putri</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: MEMPELAI (THE GROOM & BRIDE) -->
+        <section class="snap-section" data-index="3">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80" alt="Groom & Bride">
+            </div>
+            <div class="split-right">
+                <div class="card-groove">
+                    <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-green);">THE GROOM</p>
+                    <h3 style="font-family: var(--font-title); font-size: 1.8rem;">Angga Supriatna</h3>
+                    <p style="font-size: 0.75rem;">Anak Kedua Dari<br>Bapak Uju Ruhiatna & Ibu Imas Mulyati</p>
+                    
+                    <hr style="margin: 15px 0; border: none; border-top: 1px solid #a39e94;">
+                    
+                    <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--accent-green);">THE BRIDE</p>
+                    <h3 style="font-family: var(--font-title); font-size: 1.8rem;">Putri Delista</h3>
+                    <p style="font-size: 0.75rem;">Anak Pertama Dari<br>Bapak Deden (Alm) & Ibu Yuli Kartika</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: ATTIRE DRESS CODE -->
+        <section class="snap-section" data-index="4">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="Attire">
+            </div>
+            <div class="split-right">
+                <div class="card-groove">
+                    <h2>ATTIRE</h2>
+                    <p>Akan sangat berkesan bagi kami jika para tamu dapat mengenakan warna-warna ini di hari spesial kami</p>
+                    
+                    <div class="palette-container">
+                        <div class="palette-circle" style="background-color: #ffffff;"></div>
+                        <div class="palette-circle" style="background-color: #6b7a3a;"></div>
+                        <div class="palette-circle" style="background-color: #d65429;"></div>
+                        <div class="palette-circle" style="background-color: #943a1d;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: ACARA & COUNTDOWN -->
+        <section class="snap-section" data-index="5">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80" alt="Events">
+            </div>
+            <div class="split-right">
+                <div class="card-groove">
+                    <h2>AKAD & RESEPSI</h2>
+                    <p><strong>AKAD PERNIKAHAN:</strong> 08.00 - 10.00 WIB<br>
+                    <strong>RESEPSI:</strong> 11.00 WIB - SELESAI</p>
+                    <p style="font-size: 0.75rem;">Jl. Sekemala No.12 RT 01/11, Pasanggrahan, Ujung Berung, Kota Bandung</p>
+                    
+                    <div class="countdown-grid">
+                        <div class="count-box"><span id="days">00</span><small>Hari</small></div>
+                        <div class="count-box"><span id="hours">00</span><small>Jam</small></div>
+                        <div class="count-box"><span id="minutes">00</span><small>Menit</small></div>
+                        <div class="count-box"><span id="seconds">00</span><small>Detik</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: RSVP & UCAPAN -->
+        <section class="snap-section" data-index="6">
+            <div class="split-left">
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80" alt="RSVP">
+            </div>
+            <div class="split-right">
+                <div class="card-groove">
+                    <h2>RSVP & UCAPAN</h2>
+                    <form onsubmit="event.preventDefault(); alert('Ucapan berhasil terkirim!');">
+                        <input type="text" class="input-groove" placeholder="Nama Lengkap" required>
+                        <select class="input-groove">
+                            <option>Saya akan Hadir</option>
+                            <option>Maaf, Tidak Bisa Hadir</option>
+                        </select>
+                        <textarea class="input-groove" rows="3" placeholder="Ucapan & Doa Restu" required></textarea>
+                        <button type="submit" class="btn-groove" style="background: var(--text-dark); border: none; width: 100%;">KIRIM UCAPAN</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT DETEKSI SLIDE & COUNTDOWN -->
     <script>
-        // Inisialisasi Swiper Slider (Model Presentasi)
-        const swiper = new Swiper('.swiper', {
-            direction: 'horizontal',
-            loop: false,
-            effect: 'slide',
-            keyboard: {
-                enabled: true,
-            },
-            on: {
-                slideChange: function () {
-                    const currentSlide = swiper.activeIndex + 1;
-                    const totalSlides = swiper.slides.length;
-                    document.getElementById('slideCounter').innerText = `${currentSlide} / ${totalSlides}`;
-                }
-            }
-        });
-
-        function startInvitation() {
-            document.getElementById('cover').classList.add('hide');
-        }
-
-        // Ambil nama dari parameter URL (?to=Nama)
+        // Ambil URL Parameter Nama Tamu (?to=NamaTamu)
         const urlParams = new URLSearchParams(window.location.search);
         const guest = urlParams.get('to');
         if (guest) {
-            document.getElementById('guestName').innerText = "Kepada Yth: " + decodeURIComponent(guest);
+            document.getElementById('guestName').innerText = decodeURIComponent(guest);
         }
+
+        // Buka Undangan
+        function openInvitation() {
+            document.getElementById('coverScreen').classList.add('opened');
+        }
+
+        // Update Indikator Nomor Slide (01/06) saat di-scroll
+        const container = document.getElementById('snapContainer');
+        const slideNum = document.getElementById('slideNum');
+
+        container.addEventListener('scroll', () => {
+            const index = Math.round(container.scrollTop / window.innerHeight) + 1;
+            slideNum.innerText = (index < 10 ? '0' + index : index) + '/06';
+        });
+
+        // Hitung Mundur Waktu (Target Baru: 12 Desember 2026)
+        const targetDate = new Date("Dec 12, 2026 08:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 0 ? "00" : (days < 10 ? "0" + days : days);
+            document.getElementById("hours").innerText = hours < 0 ? "00" : (hours < 10 ? "0" + hours : hours);
+            document.getElementById("minutes").innerText = minutes < 0 ? "00" : (minutes < 10 ? "0" + minutes : minutes);
+            document.getElementById("seconds").innerText = seconds < 0 ? "00" : (seconds < 10 ? "0" + seconds : seconds);
+        }, 1000);
     </script>
 </body>
 </html>
