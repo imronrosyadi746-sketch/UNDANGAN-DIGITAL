@@ -50,10 +50,11 @@
             background-color: #000;
         }
 
-        .left-panel video, .left-panel img {
+        .left-panel video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
             filter: brightness(0.9) contrast(1.05);
         }
 
@@ -96,20 +97,25 @@
             margin-bottom: 20px;
         }
 
-        /* CARD PHOTO MINI GALERI FOTO TAMBAHAN */
+        /* CARD PHOTO DENGAN FOKUS WAJAH KELIHATAN UTUH */
         .card-photo {
             width: 100%;
             max-width: 420px;
-            height: 280px;
+            height: auto;
+            max-height: 520px;
             border-radius: 2px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background-color: #000;
         }
 
         .card-photo img {
             width: 100%;
             height: 100%;
+            max-height: 520px;
             object-fit: cover;
+            object-position: center 20%; /* Memastikan area wajah atas selalu terlihat */
+            display: block;
         }
 
         /* NAVBAR FIXED */
@@ -160,7 +166,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('WhatsApp Image 2026-11-08 at 18.06.06.jpeg') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('WhatsApp Image 2026-11-08 at 18.06.06.jpeg') center top/cover;
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -271,7 +277,7 @@
 </head>
 <body>
 
-    <!-- FILE AUDIO NADIN AMIZAH BERFORMAT AAC DARI REPOSITORI GITHUB -->
+    <!-- FILE AUDIO NADIN AMIZAH -->
     <audio id="bgMusic" loop preload="auto">
         <source src="Nadin_Amizah_-_Di_Akhir_Perang_(mp3.pm).aac" type="audio/aac">
         <source src="Nadin_Amizah_-_Di_Akhir_Perang_(mp3.pm).aac" type="audio/mp4">
@@ -420,7 +426,6 @@
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('opened');
             
-            // Mengatur waktu mulai lagu ke menit 2:30 (150 detik)
             try {
                 audio.currentTime = 150;
             } catch(e) {}
